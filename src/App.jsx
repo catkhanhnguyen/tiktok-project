@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     // Gọi OpenWeather API khi component được mount lần đầu tiên
     fetchWeatherData(city);
-  }, []); // Sử dụng biến city trong dependency để cập nhật khi giá trị thay đổi
+  }, []); // deps rỗng để không re-render nhiều lần không cần thiết khi nhập input
 
   const fetchWeatherData = (cityName) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`)
@@ -37,7 +37,11 @@ function App() {
     <div
       style={{
         height: '100vh',
-        background: `linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg')`,
+        background: `linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${
+          weatherData.main && weatherData.main.temp < 15
+            ? 'https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg'
+            : 'https://dthezntil550i.cloudfront.net/zs/latest/zs2104141342343070006668840/1280_960/b40b6bc4-445d-486f-a1c9-af263faa384c.jpg'
+        }')`,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -50,7 +54,11 @@ function App() {
           flexDirection: 'column',
           alignItems: 'center',
           borderRadius: '10',
-          backgroundImage: `url('https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg')`,
+          backgroundImage: `url('${
+            weatherData.main && weatherData.main.temp < 15
+              ? 'https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg'
+              : 'https://dthezntil550i.cloudfront.net/zs/latest/zs2104141342343070006668840/1280_960/b40b6bc4-445d-486f-a1c9-af263faa384c.jpg'
+          }')`,
         }}
       >
         <Input
