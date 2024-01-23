@@ -1,0 +1,14 @@
+{
+  "course": [
+    {
+      "id": "1",
+      "name": "Beginer",
+      "description": "Cách dễ nhất để học HTML CSS cho người mới bắt đầu!"
+    },
+    {
+      "id": "2",
+      "name": "Backenddd",
+      "description": "Học Back-end với Node & ExpressJS framework, hiểu các khái niệm khi làm Back-end và xây dựng RESTful API cho trang web."
+    }
+  ]
+}
