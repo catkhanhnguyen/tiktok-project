@@ -38,7 +38,7 @@ function App() {
       style={{
         height: '100vh',
         background: `linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${
-          weatherData.main && weatherData.main.temp < 15
+          weatherData && weatherData.main && weatherData.main.temp < 15
             ? 'https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg'
             : 'https://dthezntil550i.cloudfront.net/zs/latest/zs2104141342343070006668840/1280_960/b40b6bc4-445d-486f-a1c9-af263faa384c.jpg'
         }')`,
@@ -55,7 +55,7 @@ function App() {
           alignItems: 'center',
           borderRadius: '10',
           backgroundImage: `url('${
-            weatherData.main && weatherData.main.temp < 15
+            weatherData && weatherData.main && weatherData.main.temp < 15
               ? 'https://wallpapersmug.com/download/1024x768/95afc8/dark-night-river-forest-minimal-art.jpg'
               : 'https://dthezntil550i.cloudfront.net/zs/latest/zs2104141342343070006668840/1280_960/b40b6bc4-445d-486f-a1c9-af263faa384c.jpg'
           }')`,
@@ -75,7 +75,7 @@ function App() {
           variant="outline"
           placeholder="Search"
           value={city}
-          onChange={(e) => setCity(e.target.value)}
+          onChange={(e) => setCity(e.target.value)} // Cập nhật state city bằng giá trị input mới
           onKeyPress={handleEnterKeyPress}
         />
         {weatherData && (
@@ -129,14 +129,14 @@ function App() {
             </Box>
 
             <Text
-              className="shorts"
+              className="description"
               sx={{
                 color: 'white',
                 fontSize: 32,
                 textShadow: '2px 2px rgba(0,0,0,0.4)',
               }}
             >
-              {weatherData.weather && weatherData.weather[0].main}
+              {weatherData.weather && weatherData.weather[0].description}
             </Text>
 
             <Grid templateColumns="repeat(3, 1fr)" gap={2} margin="auto" color={'white'} marginBottom={'16'}>
